@@ -10,19 +10,19 @@ var questions = [
       answer: "parentheses"
     },
     {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      title: "Which built-in method adds one or more elements to the end of an array and returns the new length of the array?",
+      choices: ["last()", "put()", "add()", "push()"],
+      answer: "push()"
     },
     {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      title: "To insert a JavaScript into an HTML page, which tag is used?",
+      choices: ["<script=’java’>", "<javascript>", "<js>", "<script>"],
+      answer: "<script>"
     },
     {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      title: "Which of the following is correct to write “Hello World” on the web page?",
+      choices: ["document.write(“Hello World”)", "print(“Hello World”)", "System.out.println(“Hello World”)", "response.write(“Hello World”)"],
+      answer: ""
     },
 ];
 var satartQuiz = document.querySelector("#startQuiz");
