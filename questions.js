@@ -25,12 +25,12 @@ var questions = [
       answer: "alerts"
     },
 ];
-
 var satartQuiz = document.querySelector("#startQuiz");
 var pageOne = document.querySelector(".pageOne");
+var Time = document.querySelector("#timer");
+var Highscore = document.querySelector("#highscore");
 var paragraph = document.createElement("p");
 var paragraph2 = document.createElement("p");
-var Time = document.querySelector("#timer");
 var header = document.createElement("header");
 var choice1 = document.createElement("button");
 var choice2 = document.createElement("button");
@@ -57,18 +57,34 @@ function askQuestion(){
   Time.textContent="The rest of your time is: "+timer;
   pageOne.append(paragraph);
   paragraph.textContent=questions[i].title;
+  var uList1=document.createElement("ul");
+  var uList2=document.createElement("ul");
+  var uList3=document.createElement("ul");
+  var uList4=document.createElement("ul");
+
   choice1.textContent=questions[i].choices[0];
-  pageOne.append(choice1);
+  choice1.setAttribute("class","btn btn-primary");
+  pageOne.append(uList1);
+  uList1.append(choice1)
+  
   choice2.textContent=questions[i].choices[1];
-  pageOne.append(choice2);
+  choice2.setAttribute("class","btn btn-primary");
+  pageOne.append(uList2);
+  uList2.append(choice2)
+
   choice3.textContent=questions[i].choices[2];
-  pageOne.append(choice3);
+  choice3.setAttribute("class","btn btn-primary");
+  pageOne.append(uList3);
+  uList3.append(choice3)
+
   choice4.textContent=questions[i].choices[3];
-  pageOne.append(choice4);
+  choice4.setAttribute("class","btn btn-primary");
+  pageOne.append(uList4);
+  uList4 .append(choice4)
+
   var hr=document.createElement("hr");
   pageOne.append(hr);
   pageOne.append(paragraph2);
-  // paragraph2.textContent="";
   rightAnswer= questions[i].answer;
 }
 
@@ -115,9 +131,9 @@ function checkAnswer(){
   }else{
     paragraph2.textContent="Correct";
   }
-  console.log(timer);
-  console.log(i);
-  console.log(myAnswer);
+  // console.log(timer);
+  // console.log(i);
+  // console.log(myAnswer);
   if(i<questions.length & timer>0){
     askQuestion();
   } else{
@@ -131,17 +147,22 @@ function saveAnswer(){
     timer=0;
   }
   pageOne.textContent="";
-  Time.textContent="";
   pageOne.append(header);
+  Time.textContent="The rest of your time is: "+timer;
+  Highscore.textContent="High Score: "+bestPlayer+" "+ highScores;
   header.textContent="All Done!";
   pageOne.append(paragraph);
   paragraph.textContent="Your final score is: "+timer;
   pageOne.append(paragraph2);
   paragraph2.textContent="Enter your name: ";
   var input= document.createElement("input");
+  var uList8=document.createElement("ul");
+
   pageOne.append(input);
+  pageOne.append(uList8);
   pageOne.append(submit);
   submit.textContent="Submit";
+  submit.setAttribute("class","btn btn-primary");
   submit.addEventListener("click", function(event) {
   event.preventDefault();
     
@@ -151,17 +172,24 @@ function saveAnswer(){
     }
     localStorage.setItem("highScores", highScores);
     localStorage.setItem("bestPlayer", bestPlayer);
-    console.log(highScores);
-    console.log(bestPlayer);
     pageOne.textContent="";
+
+    var uList5=document.createElement("ul");
+    var uList6=document.createElement("ul");
+    var uList7=document.createElement("ul");
     pageOne.append(header);
     pageOne.append(input);
-    pageOne.append(goBack);
-    pageOne.append(clearScore);
+    pageOne.append(uList7);
+    pageOne.append(uList5);
+    uList5.append(goBack);
+    pageOne.append(uList6);
+    uList6.append(clearScore);
     header.textContent="High Score:";
     input.value= bestPlayer+" "+highScores;
     goBack.textContent="Go Back";
+    goBack.setAttribute("class","btn btn-primary");
     clearScore.textContent="Clear highscores";
+    clearScore.setAttribute("class","btn btn-primary");
     goBack.addEventListener("click", function(event) {
       event.preventDefault();
       reset();
@@ -188,26 +216,16 @@ function reset(){
   countDown();
 }
 
+
+pageOne.setAttribute("style","padding:100px; text-align:left;");
+Time.setAttribute("style","position:fixed; top:20px; left:20px");
+Highscore.setAttribute("style","position:fixed; top:20px; right:20px;");
+Time.textContent="The rest of your time is: "+timer;
+Highscore.textContent="High Score: "+bestPlayer+" "+ highScores;
+
 satartQuiz.addEventListener("click",start);
 
 
 
 
 
-
-// timer=75;
-// for (i=0;i<questions.length;i++){
-//   // pageOne.textContent="";
-//   pageOne.textContent=questions[i].title;
-//   choice1.textContent=questions[i].choices[0];
-//   pageOne.append(choice1);
-//   choice2.textContent=questions[i].choices[1];
-//   pageOne.append(choice2);
-//   choice3.textContent=questions[i].choices[2];
-//   pageOne.append(choice3);
-//   choice4.textContent=questions[i].choices[3];
-//   pageOne.append(choice4);
-//   rightAnswer= questions[i].answer;
-//   getAnswer();  
-//   console.log(myAnswer);
-// }
